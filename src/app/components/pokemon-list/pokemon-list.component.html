@@ -1,0 +1,34 @@
+<div class="pokemon-list-container">
+  <div class="table-container">
+    <table mat-table [dataSource]="pokemons" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let pokemon">
+          {{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1).toLowerCase() }} 
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="types">
+        <th mat-header-cell *matHeaderCellDef> Tipos </th>
+        <td mat-cell *matCellDef="let pokemon">
+          <span *ngFor="let type of pokemon.types; let i = index">
+            {{ type.type.name }}<span *ngIf="i < pokemon.types.length - 1">, </span>
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let pokemon">
+          <button mat-button (click)="openModal(pokemon)">
+            <mat-icon>visibility</mat-icon> Ver Detalles
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>

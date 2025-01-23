@@ -1,0 +1,29 @@
+<div class="pokemon-modal">
+  <h2 class="pokemon-title">{{ data.name }}</h2>
+  <div class="pokemon-image">
+    <img *ngIf="data.sprites" [src]="data.sprites.front_default" alt="{{ data.name }} image" />
+  </div>
+  <div class="pokemon-details">
+    <p class="pokemon-info">
+      <strong>Height:</strong> {{ data.height }}
+    </p>
+    <div class="separator"></div>
+    <p class="pokemon-info">
+      <strong>Weight:</strong> {{ data.weight }}
+    </p>
+    <div class="separator"></div>
+    <p><strong>Types:</strong></p>
+    <div class="types-container">
+      <span *ngFor="let type of data.types" class="type-chip">
+        {{ type.type.name }}
+      </span>
+    </div>
+    <div class="separator"></div>
+    <p><strong>Abilities:</strong></p>
+    <div class="abilities-container">
+      <span *ngFor="let ability of data.abilities" class="ability-chip">
+        {{ ability.ability.name }}
+      </span>
+    </div>
+  </div>
+</div>
